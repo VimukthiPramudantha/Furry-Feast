@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FurryFeast"
         tools:targetApi="31">
         <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".EducationalContent"
             android:exported="false" />
         <activity
