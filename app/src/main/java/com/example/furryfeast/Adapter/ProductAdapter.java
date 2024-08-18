@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private List<Product> productList;
-    private Context context;
+    private final List<Product> productList;
+    private final Context context;
 
     public ProductAdapter(List<Product> productList, Context context) {
         this.productList = productList;
@@ -36,10 +36,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
+
         holder.productName.setText(product.getName());
         holder.productDescription.setText(product.getDescription());
-        holder.productPrice.setText(String.format("$%.2f", product.getPrice()));
-        holder.productImage.setImageResource(product.getImageResId());
+        holder.productPrice.setText("$" + (product.getPrice()));
+        holder.productImage.setImageResource(product.getImageUrl());
+
+        holder.addToCartButton.setOnClickListener(v -> {
+            // Handle add to cart action here
+        });
     }
 
     @Override
@@ -48,18 +53,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-
         ImageView productImage;
         TextView productName, productDescription, productPrice;
-        Button addToCart;
+        Button addToCartButton;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
+
             productImage = itemView.findViewById(R.id.product_image);
             productName = itemView.findViewById(R.id.product_name);
             productDescription = itemView.findViewById(R.id.product_description);
             productPrice = itemView.findViewById(R.id.product_price);
-            addToCart = itemView.findViewById(R.id.addToCart);
+            addToCartButton = itemView.findViewById(R.id.addToCart);
         }
     }
 }

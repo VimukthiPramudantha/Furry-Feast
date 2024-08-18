@@ -6,7 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.furryfeast.Model.Product;
 import com.example.furryfeast.Model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -113,6 +117,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         boolean userExists = cursor.getCount() > 0;
         cursor.close();
         return userExists;
+    }
+
+    // Method to get all products
+    public List<Product> getAllProducts() {
+        List<Product> productList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_PRODUCTS;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Product product = new Product(
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_DESCRIPTION)),
+                        cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_PRICE)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE_URL))
+                );
+                productList.add(product);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return productList;
     }
 
 }

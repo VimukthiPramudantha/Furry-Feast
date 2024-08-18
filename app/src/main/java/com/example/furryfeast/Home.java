@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.furryfeast.Adapter.ProductAdapter;
 import com.example.furryfeast.Model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
@@ -17,6 +16,7 @@ public class Home extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private List<Product> productList;
+    private DatabaseHelper dbHelper;
     private int userId;
 
     @Override
@@ -32,21 +32,19 @@ public class Home extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize product list and adapter
-        productList = new ArrayList<>();
-        productAdapter = new ProductAdapter(productList, this);
-        recyclerView.setAdapter(productAdapter);
+        // Initialize DatabaseHelper
+        dbHelper = new DatabaseHelper(this);
 
-        // Load products (you'll need to implement this method to fetch products from your database or API)
+        // Load products from database
         loadProducts();
     }
 
     private void loadProducts() {
-        // Dummy data for demonstration purposes
-        productList.add(new Product("Product 1", "Description 1", 10.00, R.drawable.ic_launcher_background));
-        productList.add(new Product("Product 2", "Description 2", 20.00, R.drawable.ic_launcher_background));
+        // Retrieve products from the database
+        productList = dbHelper.getAllProducts();
 
-        // Notify the adapter about data changes
-        productAdapter.notifyDataSetChanged();
+        // Initialize adapter with product list
+        productAdapter = new ProductAdapter(productList, this);
+        recyclerView.setAdapter(productAdapter);
     }
 }
