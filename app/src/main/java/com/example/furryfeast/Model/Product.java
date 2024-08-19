@@ -1,16 +1,20 @@
 package com.example.furryfeast.Model;
 
 public class Product {
+    private int id;
     private String name;
     private String description;
     private double price;
-    private int imageUrl;
+    private String imageUrl;
+    private int quantity;
 
-    public Product(String name, String description, double price, int imageUrl) {
+    public Product(int id,String name, String description, double price, String  imageUrl, int quantity) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.quantity = quantity;
     }
 
     // Getters and setters
@@ -38,11 +42,27 @@ public class Product {
         this.price = price;
     }
 
-    public int getImageUrl() {
+    public String  getImageUrl() {
         return imageUrl;
     }
 
-    public void SetImageUrl(int imageUrl) {
+    public void SetImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -21,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Table names
     public static final String TABLE_USERS = "users";
     public static final String TABLE_PRODUCTS = "products";
+    public static final String TABLE_CART = "cart";
 
     // Users Table Columns
     public static final String COLUMN_USER_ID = "id";
@@ -35,6 +36,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PRODUCT_DESCRIPTION = "description";
     public static final String COLUMN_PRODUCT_PRICE = "price";
     public static final String COLUMN_PRODUCT_IMAGE_URL = "image_url";
+
+    // Cart Table Columns
+    public static final String COLUMN_CART_ID = "id";
+    public static final String COLUMN_CART_USER_ID = "user_id";
+    public static final String COLUMN_CART_PRODUCT_ID = "product_id";
+    public static final String COLUMN_CART_QUANTITY = "quantity";
 
     // SQL statement to create the users table
     private static final String CREATE_TABLE_USERS = "CREATE TABLE " + TABLE_USERS + " ("
@@ -52,6 +59,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_PRODUCT_PRICE + " REAL NOT NULL, "
             + COLUMN_PRODUCT_IMAGE_URL + " TEXT NOT NULL);";
 
+    // SQL statement to create the cart table
+    private static final String CREATE_TABLE_CART = "CREATE TABLE " + TABLE_CART + " ("
+            + COLUMN_CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_CART_USER_ID + " INTEGER NOT NULL, "
+            + COLUMN_CART_PRODUCT_ID + " INTEGER NOT NULL, "
+            + COLUMN_CART_QUANTITY + " INTEGER NOT NULL, "
+            + "FOREIGN KEY(" + COLUMN_CART_USER_ID + ") REFERENCES " + TABLE_USERS + "(" + COLUMN_USER_ID + "), "
+            + "FOREIGN KEY(" + COLUMN_CART_PRODUCT_ID + ") REFERENCES " + TABLE_PRODUCTS + "(" + COLUMN_PRODUCT_ID +"));";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -61,6 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Create tables
         db.execSQL(CREATE_TABLE_USERS);
         db.execSQL(CREATE_TABLE_PRODUCTS);
+        db.execSQL(CREATE_TABLE_CART);
     }
 
     @Override
@@ -68,7 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Drop older tables if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTS);
-        // Create new tables
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
         onCreate(db);
     }
 
@@ -108,7 +125,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
     // Method to check if a user exists
     public boolean checkUserExists(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -131,10 +147,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Product product = new Product(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_ID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_NAME)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_DESCRIPTION)),
                         cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_PRICE)),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE_URL))
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE_URL)),
+                        0  // Default quantity for products fetched without cart context
                 );
                 productList.add(product);
             } while (cursor.moveToNext());
@@ -144,4 +162,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return productList;
     }
 
-}
+    // Method to add an item to the cart
+    public void addCartItem(int userId, int productId, int quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CART_USER_ID, userId);
+        values.put(COLUMN_CART_PRODUCT_ID, productId);
+        values.put(COLUMN_CART_QUANTITY, quantity);
+
+        // Inserting Row
+        db.insert(TABLE_CART, null, values);
+        db.close(); // Closing database connection
+    }
+
+    public List<Product> getCartItemsByUserId(int userId) {
+        List<Product> cartItems = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT p.*, c." + COLUMN_CART_QUANTITY + " FROM " + TABLE_CART + " c JOIN " + TABLE_PRODUCTS + " p ON c." + COLUMN_CART_PRODUCT_ID + " = p." + COLUMN_PRODUCT_ID + " WHERE c." + COLUMN_CART_USER_ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Get product details from cursor
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CART_ID));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_NAME));
+                String description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_DESCRIPTION));
+                double price = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_PRICE));
+                String imageUrl = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE_URL));
+                int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CART_QUANTITY));
+
+                // Create a Product object and add to the list
+                Product product = new Product(id,name, description, price, imageUrl, quantity);
+                cartItems.add(product);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return cartItems;
+    }
+    }

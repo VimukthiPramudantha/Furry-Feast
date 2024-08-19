@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.furryfeast.Model.Product;
 import com.example.furryfeast.R;
 
@@ -20,10 +21,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private final List<Product> productList;
     private final Context context;
+    private final OnAddToCartClickListener onAddToCartClickListener;
 
-    public ProductAdapter(List<Product> productList, Context context) {
+    public ProductAdapter(List<Product> productList, Context context, OnAddToCartClickListener onAddToCartClickListener) {
         this.productList = productList;
         this.context = context;
+        this.onAddToCartClickListener = onAddToCartClickListener;
     }
 
     @NonNull
@@ -39,11 +42,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         holder.productName.setText(product.getName());
         holder.productDescription.setText(product.getDescription());
-        holder.productPrice.setText("$" + (product.getPrice()));
-        holder.productImage.setImageResource(product.getImageUrl());
+        holder.productPrice.setText("$" + product.getPrice());
+
+        // Load image using Glide
+        Glide.with(context)
+                .load(product.getImageUrl())
+                .into(holder.productImage);
 
         holder.addToCartButton.setOnClickListener(v -> {
-            // Handle add to cart action here
+            if (onAddToCartClickListener != null) {
+                onAddToCartClickListener.onAddToCartClick(product);
+            }
         });
     }
 
@@ -66,5 +75,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productPrice = itemView.findViewById(R.id.product_price);
             addToCartButton = itemView.findViewById(R.id.addToCart);
         }
+    }
+
+    public interface OnAddToCartClickListener {
+        void onAddToCartClick(Product product);
     }
 }

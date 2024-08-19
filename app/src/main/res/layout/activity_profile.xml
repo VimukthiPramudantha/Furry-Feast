@@ -74,4 +74,60 @@
         android:layout_marginTop="16dp"
         android:text="Logout" />
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/homeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Home"
+                android:layout_weight="1"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/cartBtn"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black"
+                android:text="Cart" />
+            <Button
+                android:id="@+id/eduBtn"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black"
+                android:text="Info" />
+            <Button
+                android:id="@+id/profileBtn"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Profile" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

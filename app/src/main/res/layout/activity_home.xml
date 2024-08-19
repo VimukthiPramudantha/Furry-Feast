@@ -4,9 +4,93 @@
     android:layout_height="match_parent"
     android:background="@drawable/backimg">
 
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:background="#ffeaa7"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/shop_logo"
+            android:layout_width="94dp"
+            android:layout_height="98dp"
+            android:contentDescription="Shop Logo"
+            android:src="@drawable/img" />
+
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/shop_logo"
+            android:text="FURRY FEAST"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head"
+        android:layout_marginTop="-1dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+    <LinearLayout
+
+    android:layout_width="match_parent"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Home"
+            android:layout_weight="1"
+            android:backgroundTint="#b2bec3"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/cartBtn"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#b2bec3"
+            android:textColor="@color/black"
+            android:text="Cart" />
+        <Button
+            android:id="@+id/eduBtn"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#b2bec3"
+            android:textColor="@color/black"
+            android:text="Info" />
+        <Button
+            android:id="@+id/profileBtn"
+            android:backgroundTint="#b2bec3"
+            android:textColor="@color/black"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile" />
+    </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
