@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backimg"
+    android:background="@color/white"
     tools:context=".Cart">
 
     <RelativeLayout
         android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="126dp"
-        android:background="#ffeaa7"
+        android:background="@drawable/headback"
         android:padding="16dp">
 
         <ImageView
@@ -45,9 +45,9 @@
         android:id="@+id/summary_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border"
         android:layout_alignParentBottom="true"
-        android:padding="16dp"
-        android:background="#ffeaa7">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/total_label"

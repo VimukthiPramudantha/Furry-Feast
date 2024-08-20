@@ -21,9 +21,9 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         // Initialize views
-        title = findViewById(R.id.title);
-        educationalText = findViewById(R.id.educational_text);
-        educationalImage = findViewById(R.id.educational_image);
+        title = findViewById(R.id.tvArticleTitle1);
+        educationalText = findViewById(R.id.tvArticleContent1);
+        educationalImage = findViewById(R.id.ivArticleImage1);
         Button homeBtn = findViewById(R.id.homeBtn);
         Button cartBtn = findViewById(R.id.cartBtn);
         Button profileBtn = findViewById(R.id.profileBtn);
@@ -31,8 +31,8 @@ public class InfoActivity extends AppCompatActivity {
 
         // Set educational content programmatically (if needed)
         title.setText("Dog Nutrition Tips");
-        educationalText.setText("Proper nutrition is essential for the health and well-being of your dog. Make sure to provide a balanced diet with the right mix of proteins, fats, carbohydrates, vitamins, and minerals.");
-        educationalImage.setImageResource(R.drawable.img);
+        educationalText.setText("Proper nutrition is essential for the health and well-being of your dog...");
+        educationalImage.setImageResource(R.drawable.article);
 
         // Set OnClickListener for buttons to navigate to other activities
         homeBtn.setOnClickListener(v -> {
@@ -50,8 +50,5 @@ public class InfoActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        eduBtn.setOnClickListener(v -> {
-            // Info button clicked, do nothing or refresh the current activity
-        });
     }
 }

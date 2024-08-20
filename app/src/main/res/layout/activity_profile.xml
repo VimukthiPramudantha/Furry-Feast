@@ -7,7 +7,7 @@
         android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="126dp"
-        android:background="#ffeaa7"
+        android:background="@drawable/headback"
         android:padding="16dp">
 
         <ImageView

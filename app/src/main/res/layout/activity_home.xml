@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/backimg">
+    android:background="@color/white"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="126dp"
-        android:background="#ffeaa7"
+        android:background="@drawable/headback"
         android:padding="16dp">
 
         <ImageView

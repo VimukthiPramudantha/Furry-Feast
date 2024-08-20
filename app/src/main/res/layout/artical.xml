@@ -1,0 +1,30 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Educational Content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="16dp"/>
+
+        <!-- Article 1 -->
+        <ImageView
+            android:id="@+id/ivArticleImage1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/img"
+            android:scaleType="centerCrop"
+            android:contentDescription="Dog Nutrition Image"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
