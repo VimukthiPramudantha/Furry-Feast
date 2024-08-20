@@ -70,10 +70,10 @@ public class Home extends AppCompatActivity implements ProductAdapter.OnAddToCar
             startActivity(intent);
         });
 
-//        eduBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(Home.this, Edu.class);
-//            startActivity(intent);
-//        });
+        eduBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, InfoActivity.class);
+            startActivity(intent);
+        });
 
         profileBtn.setOnClickListener(v -> {
             Intent intent = new Intent(Home.this, Profile.class);
@@ -86,6 +86,7 @@ public class Home extends AppCompatActivity implements ProductAdapter.OnAddToCar
         // Handle add to cart action
         int quantity = 1; // Default quantity
        dbHelper.addCartItem(userId, product.getId(), quantity);
+        Toast.makeText(this, "Item added to Cart!", Toast.LENGTH_SHORT).show();
 
 
     }

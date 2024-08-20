@@ -7,7 +7,7 @@
         android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="126dp"
-        android:background="#ababab"
+        android:background="#ffeaa7"
         android:padding="16dp">
 
         <ImageView
@@ -24,10 +24,10 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="50dp"
             android:layout_toEndOf="@id/shop_logo"
-            android:textStyle="bold"
             android:text="FURRY FEAST"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ImageView
@@ -72,13 +72,16 @@
         android:layout_below="@id/profile_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:backgroundTint="#c8d6e5"
         android:text="Logout" />
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_shadow">
 
         <LinearLayout
 

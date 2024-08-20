@@ -1,5 +1,6 @@
 package com.example.furryfeast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,9 @@ public class signUpPage extends AppCompatActivity {
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
         Button submitButton = findViewById(R.id.submit_button);
+        Button loginBtn = findViewById(R.id.sign_in_button);
 
+        loginBtn.setOnClickListener(v -> navigateToSignIn());
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,5 +50,11 @@ public class signUpPage extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+    private void navigateToSignIn() {
+        Intent intent = new Intent(this, LoginPage.class);
+        startActivity(intent);
     }
 }

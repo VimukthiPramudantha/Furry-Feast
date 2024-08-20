@@ -201,4 +201,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return cartItems;
     }
+
+    // Method to remove an item from the cart
+    public void removeCartItem(int cartId, int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CART, COLUMN_CART_ID + " = ?", new String[]{String.valueOf(cartId)});
+        db.close();
     }
+
+}

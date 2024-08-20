@@ -8,9 +8,9 @@
     <RelativeLayout
         android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="#ababab">
+        android:layout_height="126dp"
+        android:background="#ffeaa7"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/shop_logo"
@@ -23,13 +23,13 @@
             android:id="@+id/shop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/shop_logo"
             android:layout_centerVertical="true"
             android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/shop_logo"
             android:text="FURRY FEAST"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="30sp"
-            android:textColor="@color/black" />
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <EditText
@@ -42,9 +42,9 @@
         android:background="@drawable/rounded_edit_text"
         android:hint="First Name"
         android:padding="12dp"
-        android:backgroundTint="#6b6b6b"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:backgroundTint="#c8d6e5"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="16sp" />
 
 
@@ -58,9 +58,9 @@
         android:background="@drawable/rounded_edit_text"
         android:hint="Last Name"
         android:padding="12dp"
-        android:backgroundTint="#6b6b6b"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:backgroundTint="#c8d6e5"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="16sp" />
 
 
@@ -73,11 +73,11 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_edit_text"
-        android:backgroundTint="#6b6b6b"
         android:hint="Email"
         android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:backgroundTint="#c8d6e5"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="16sp" />
 
 
@@ -91,9 +91,9 @@
         android:background="@drawable/rounded_edit_text"
         android:hint="Password"
         android:padding="12dp"
-        android:backgroundTint="#6b6b6b"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:backgroundTint="#c8d6e5"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="16sp"
         android:inputType="textPassword" />
 
@@ -117,9 +117,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Submit"
-        android:backgroundTint="#6b6b6b"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:backgroundTint="#c8d6e5"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:padding="12dp"
         android:textSize="16sp" />
 
@@ -132,9 +132,9 @@
         android:layout_marginTop="8dp"
         android:text="Sign IN"
         android:padding="12dp"
-        android:backgroundTint="#6b6b6b"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:backgroundTint="#c8d6e5"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="16sp" />
 
 

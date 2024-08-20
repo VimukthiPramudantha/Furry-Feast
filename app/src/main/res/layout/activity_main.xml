@@ -6,10 +6,11 @@
 
 
     <RelativeLayout
+        android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="#ababab">
+        android:layout_height="126dp"
+        android:background="#ffeaa7"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/shop_logo"
@@ -22,13 +23,13 @@
             android:id="@+id/shop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/shop_logo"
             android:layout_centerVertical="true"
             android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/shop_logo"
             android:text="FURRY FEAST"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="30sp"
-            android:textColor="@color/black" />
+            android:textStyle="bold" />
     </RelativeLayout>
 
 
@@ -55,8 +56,8 @@
             android:layout_below="@id/dog_food_logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="45dp"
-            android:backgroundTint="#6b6b6b"
-            android:textColor="@color/white"
+            android:backgroundTint="#c8d6e5"
+            android:textColor="@color/black"
             android:text="Sign IN" />
 
         <Button
@@ -66,8 +67,8 @@
             android:layout_below="@id/sign_in_button"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#6b6b6b"
-            android:textColor="@color/white"
+            android:backgroundTint="#c8d6e5"
+            android:textColor="@color/black"
             android:text="Sign UP" />
     </RelativeLayout>
 

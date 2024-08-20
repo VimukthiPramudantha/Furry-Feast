@@ -29,6 +29,7 @@ public class LoginPage extends AppCompatActivity {
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
         Button signInButton = findViewById(R.id.sign_in_button);
+        Button signUpButton = findViewById(R.id.sign_up_button);
 
         dbHelper = new DatabaseHelper(this);
 
@@ -39,6 +40,7 @@ public class LoginPage extends AppCompatActivity {
         });
 
         signInButton.setOnClickListener(v -> handleSignIn());
+        signUpButton.setOnClickListener(v -> navigateToSignUp());
     }
 
     private void handleSignIn() {
@@ -63,6 +65,10 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
+    private void navigateToSignUp() {
+        Intent intent = new Intent(this, signUpPage.class);
+        startActivity(intent);
+    }
 
     private void saveSession(String email, int userId) {
         SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
@@ -71,5 +77,4 @@ public class LoginPage extends AppCompatActivity {
         editor.putInt("user_id", userId);
         editor.apply();
     }
-
 }

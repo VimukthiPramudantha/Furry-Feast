@@ -35,61 +35,65 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         android:layout_below="@+id/head"
         android:layout_marginTop="-1dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_shadow">
 
-    <LinearLayout
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    android:layout_width="match_parent"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+            <Button
+                android:id="@+id/homeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Home"
+                android:layout_weight="1"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/homeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="Home"
-            android:layout_weight="1"
-            android:backgroundTint="#b2bec3"
-            android:textColor="@color/black" />
+            <Button
+                android:id="@+id/cartBtn"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black"
+                android:text="Cart" />
 
-        <Button
-            android:id="@+id/cartBtn"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#b2bec3"
-            android:textColor="@color/black"
-            android:text="Cart" />
-        <Button
-            android:id="@+id/eduBtn"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#b2bec3"
-            android:textColor="@color/black"
-            android:text="Info" />
-        <Button
-            android:id="@+id/profileBtn"
-            android:backgroundTint="#b2bec3"
-            android:textColor="@color/black"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Profile" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/eduBtn"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black"
+                android:text="Info" />
+
+            <Button
+                android:id="@+id/profileBtn"
+                android:backgroundTint="#c8d6e5"
+                android:textColor="@color/black"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Profile" />
+        </LinearLayout>
 
     </RelativeLayout>
 

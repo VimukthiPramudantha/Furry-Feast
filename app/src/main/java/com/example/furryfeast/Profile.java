@@ -9,18 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.furryfeast.Model.User;
-import com.example.furryfeast.DatabaseHelper;
 
 public class Profile extends AppCompatActivity {
 
     private ImageView profilePicture;
     private TextView profileName, profileEmail;
-    private Button logoutButton;
+    private Button logoutButton, homeButton, cartButton, eduButton, profileButton;
     private DatabaseHelper dbHelper;
 
     @Override
@@ -28,12 +24,15 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-
         // Initialize views
         profilePicture = findViewById(R.id.profile_picture);
         profileName = findViewById(R.id.profile_name);
         profileEmail = findViewById(R.id.profile_email);
         logoutButton = findViewById(R.id.logout_button);
+        homeButton = findViewById(R.id.homeBtn);
+        cartButton = findViewById(R.id.cartBtn);
+        eduButton = findViewById(R.id.eduBtn);
+        profileButton = findViewById(R.id.profileBtn);
 
         // Initialize database helper
         dbHelper = new DatabaseHelper(this);
@@ -62,10 +61,36 @@ public class Profile extends AppCompatActivity {
 
                 // Redirect to MainActivity
                 Intent intent = new Intent(Profile.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
         });
+
+        // Set OnClickListeners for navigation buttons
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, Home.class);
+                startActivity(intent);
+            }
+        });
+
+        cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, Cart.class);
+                startActivity(intent);
+            }
+        });
+
+        eduButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
