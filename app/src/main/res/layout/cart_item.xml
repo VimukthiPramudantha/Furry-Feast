@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/item_quantity"
         android:layout_alignParentEnd="true"
-        android:backgroundTint="#c8d6e5"
+        android:backgroundTint="#ff9836"
         android:textColor="@color/black"
         android:text="Remove"
         app:cornerRadius="20dp" />

@@ -77,7 +77,7 @@
             android:layout_alignParentEnd="true"
             android:text="Checkout"
             android:textSize="16sp"
-            android:backgroundTint="#c8d6e5"
+            android:backgroundTint="#ff9836 "
             android:textColor="@color/black"
             android:padding="12dp" />
     </RelativeLayout>

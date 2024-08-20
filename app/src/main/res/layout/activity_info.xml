@@ -106,7 +106,7 @@
             android:layout_marginRight="5dp"
             android:text="Home"
             android:layout_weight="1"
-            android:backgroundTint="#c8d6e5"
+            android:backgroundTint="#ff9836"
             android:textColor="@color/black" />
 
         <Button
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#c8d6e5"
+            android:backgroundTint="#ff9836"
             android:textColor="@color/black"
             android:text="Cart" />
         <Button
@@ -124,12 +124,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#c8d6e5"
+            android:backgroundTint="#ff9836"
             android:textColor="@color/black"
             android:text="Info" />
         <Button
             android:id="@+id/profileBtn"
-            android:backgroundTint="#c8d6e5"
+            android:backgroundTint="#ff9836"
             android:textColor="@color/black"
             android:layout_marginRight="5dp"
             android:layout_width="wrap_content"
