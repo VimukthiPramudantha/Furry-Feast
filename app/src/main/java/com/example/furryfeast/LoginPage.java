@@ -56,7 +56,6 @@ public class LoginPage extends AppCompatActivity {
         if (user != null && password.equals(user.getPassword())) {
             saveSession(user.getEmail(), user.getUserId());
 
-            // Redirect to another activity on successful login
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
             finish();

@@ -44,7 +44,7 @@
         android:layout_marginRight="10dp"
         android:orientation="vertical">
 
-    <!-- Header -->
+
     <TextView
         android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
@@ -56,7 +56,6 @@
         android:layout_gravity="center_horizontal"
         android:paddingBottom="16dp"/>
 
-    <!-- Article 1 -->
         <ImageView
             android:id="@+id/ivArticleImage1"
             android:layout_width="match_parent"

@@ -30,27 +30,21 @@ public class Home extends AppCompatActivity implements ProductAdapter.OnAddToCar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Retrieve the user ID from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
         userId = sharedPreferences.getInt("user_id", -1);
 
-        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize DatabaseHelper
         dbHelper = new DatabaseHelper(this);
 
-        // Load products from database
         loadProducts();
         setupButtonListeners();
     }
 
     private void loadProducts() {
-        // Retrieve products from the database
         productList = dbHelper.getAllProducts();
 
-        // Initialize adapter with product list and callback
         productAdapter = new ProductAdapter(productList, this, this);
         recyclerView.setAdapter(productAdapter);
     }
@@ -62,7 +56,6 @@ public class Home extends AppCompatActivity implements ProductAdapter.OnAddToCar
         Button profileBtn = findViewById(R.id.profileBtn);
 
         homeBtn.setOnClickListener(v -> {
-            // Optional: Navigate to Home again
         });
 
         cartBtn.setOnClickListener(v -> {
@@ -83,8 +76,7 @@ public class Home extends AppCompatActivity implements ProductAdapter.OnAddToCar
 
     @Override
     public void onAddToCartClick(Product product) {
-        // Handle add to cart action
-        int quantity = 1; // Default quantity
+        int quantity = 1;
        dbHelper.addCartItem(userId, product.getId(), quantity);
         Toast.makeText(this, "Item added to Cart!", Toast.LENGTH_SHORT).show();
 

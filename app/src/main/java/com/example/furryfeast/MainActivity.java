@@ -18,14 +18,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Check if the user is already logged in
         SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
         int userId = sharedPreferences.getInt("user_id", -1);
         if (userId != -1) {
-            // User is logged in, redirect to Home activity
             Intent intent = new Intent(MainActivity.this, Home.class);
             startActivity(intent);
-            finish(); // Close MainActivity
+            finish();
             return;
         }
 
@@ -37,15 +35,12 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Find the Sign In button by its ID
         Button signInButton = findViewById(R.id.sign_in_button);
         Button signUpButton = findViewById(R.id.sign_up_button);
 
-        // Set an OnClickListener on the Sign In button
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the LoginActivity
                 Intent intent = new Intent(MainActivity.this, LoginPage.class);
                 startActivity(intent);
             }

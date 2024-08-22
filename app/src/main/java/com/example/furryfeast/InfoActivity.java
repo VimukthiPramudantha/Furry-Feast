@@ -20,7 +20,6 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        // Initialize views
         title = findViewById(R.id.tvArticleTitle1);
         educationalText = findViewById(R.id.tvArticleContent1);
         educationalImage = findViewById(R.id.ivArticleImage1);
@@ -29,12 +28,10 @@ public class InfoActivity extends AppCompatActivity {
         Button profileBtn = findViewById(R.id.profileBtn);
         Button eduBtn = findViewById(R.id.eduBtn);
 
-        // Set educational content programmatically (if needed)
         title.setText("Dog Nutrition Tips");
         educationalText.setText("Proper nutrition is essential for the health and well-being of your dog...");
         educationalImage.setImageResource(R.drawable.article);
 
-        // Set OnClickListener for buttons to navigate to other activities
         homeBtn.setOnClickListener(v -> {
             Intent intent = new Intent(InfoActivity.this, Home.class);
             startActivity(intent);

@@ -22,18 +22,18 @@ public class CartAdapter extends ArrayAdapter<Product> {
 
     private DatabaseHelper dbHelper;
     private List<Product> cartItems;
-    private int userId; // Store userId here
+    private int userId;
     private SharedPreferences sharedPreferences;
 
     public CartAdapter(Context context, List<Product> cartItems) {
         super(context, 0, cartItems);
         this.cartItems = cartItems;
-        dbHelper = new DatabaseHelper(context); // Initialize the DatabaseHelper
+        dbHelper = new DatabaseHelper(context);
         sharedPreferences = context.getSharedPreferences("user_session", MODE_PRIVATE);
         this.userId = sharedPreferences.getInt("user_id",0);
     }
 
-    // Setter method for userId
+
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -56,14 +56,11 @@ public class CartAdapter extends ArrayAdapter<Product> {
             itemPrice.setText("$" + String.format("%.2f", product.getPrice()));
             itemQuantity.setText(String.valueOf(product.getQuantity()));
 
-            // Set remove button click listener
             removeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
-                        // Remove the item from the database
                         dbHelper.removeCartItem(userId, product.getId());
-                        // Remove the item from the list and notify the adapter
                         cartItems.remove(position);
                         notifyDataSetChanged();
                         Toast.makeText(getContext(), "Item removed successfully!", Toast.LENGTH_SHORT).show();
