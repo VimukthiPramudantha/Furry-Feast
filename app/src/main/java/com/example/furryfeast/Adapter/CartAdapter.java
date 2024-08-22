@@ -1,6 +1,9 @@
 package com.example.furryfeast.Adapter;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +23,14 @@ public class CartAdapter extends ArrayAdapter<Product> {
     private DatabaseHelper dbHelper;
     private List<Product> cartItems;
     private int userId; // Store userId here
+    private SharedPreferences sharedPreferences;
 
     public CartAdapter(Context context, List<Product> cartItems) {
         super(context, 0, cartItems);
         this.cartItems = cartItems;
         dbHelper = new DatabaseHelper(context); // Initialize the DatabaseHelper
+        sharedPreferences = context.getSharedPreferences("user_session", MODE_PRIVATE);
+        this.userId = sharedPreferences.getInt("user_id",0);
     }
 
     // Setter method for userId
